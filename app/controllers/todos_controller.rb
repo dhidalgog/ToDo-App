@@ -10,6 +10,7 @@ class TodosController < ApplicationController
 
   def create
     @todo = Todo.new(todo_params)
+    @todo.completed = false
     @todo.save
     redirect_to todos_path
   end
@@ -28,11 +29,24 @@ class TodosController < ApplicationController
     redirect_to todos_path
   end
 
+  def destroy
+    @todo = Todo.find(params[:id])
+    @todo.destroy
+    redirect_to todos_path
+  end
+
+  def complete
+    @todo = Todo.find(params[:id])
+    @todo.completed = true
+    @todo.save
+    redirect_to todos_path
+  end
+
 end
 
 private
 
 def todo_params
   #Cambiar completed más adelante
-  params.require(:todo).permit(:description, :completed)
+  params.require(:todo).permit(:description)
 end

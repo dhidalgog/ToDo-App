@@ -4,7 +4,9 @@
     <div class="card-body">
       <h5 class="card-title"><%= todo.description %></h5>
       <p class="card-text"><%= todo.completed %></p>
-      <p><%= link_to  "Editar", todos_edit_path(todo) %></p>
+      <p><%= link_to  "Editar", todo_edit_path(todo) %></p>
+      <p><%= link_to  "Eliminar", todo_destroy_path(todo), method: :delete %></p>
+      <p><%= link_to  "Completado", todo_complete_path(todo) %></p>
     </div>
   </div>
 <% end %>
