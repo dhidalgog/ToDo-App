@@ -1,10 +1,14 @@
 <% @todos.each do |todo| %>
-  <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
-  <div class="card-header"><%= todo.id %></div>
-  <div class="card-body">
-    <h5 class="card-title"><%= todo.description %></h5>
-    <p class="card-text"><%= todo.completed %></p>
+  <div class="card text-white bg-secondary mb-3" style="max-width: 18rem;">
+    <div class="card-header"><%= todo.id %></div>
+    <div class="card-body">
+      <h5 class="card-title"><%= todo.description %></h5>
+      <p class="card-text"><%= todo.completed %></p>
+    </div>
   </div>
 <% end %>
+
+<button type="button" class="btn btn-primary"><%= link_to  "Crear nuevo ToDo", todos_new_path %></button>
+
 
 
