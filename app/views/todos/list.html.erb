@@ -1,32 +1,45 @@
-
 <div class="row">
   <div class="col-md-6">
-    <div class="card text-white bg-primary mb-5" style="max-width: 18rem;">
-      <% @todos.each do |todo| %>
-        <% if todo.completed == true %>
-          <div class="card-body">
-            <h5 class="card-title"><%= todo.description %></h5>
-            <p class="card-text"><%= todo.completed %></p>
-          </div>
+    <h1> Non Completed: </h1>
+    <div class="card text-white border-danger">
+      <ul class="list-group list-group-flush">
+        <% @todos.each do |todo| %>
+          <% if todo.completed == false %>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              <p class="card-text"><%= todo.description %></p>
+              <div class="btn-group" role="group" aria-label="Basic example">
+                <%= link_to "Show", todo_path(todo), class:'btn btn-primary' %>
+                <%= link_to "Edit", todo_edit_path(todo), class:'btn btn-info' %>
+                <%= link_to "Delete", todo_destroy_path(todo), method: :delete, class:'btn btn-warning' %>
+                <%= link_to "Complete", todo_complete_path(todo), class:'btn btn-secondary' %>
+              </div>
+            </li>
+          <% end %>
         <% end %>
-      <% end %>
+      </ul>
     </div>
+    <br>
   </div>
 
   <div class="col-md-6">
-      <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
-      <% @todos.each do |todo| %>
-        <% if todo.completed == false %>
-        <div class="card-body">
-          <h5 class="card-title"><%= todo.description %></h5>
-          <p class="card-text"><%= todo.completed %></p>
-        </div>
+    <h1>Completed: </h1>
+    <div class="card text-white border-success">
+      <ul class="list-group list-group-flush">
+        <% @todos.each do |todo| %>
+          <% if todo.completed == true %>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              <p class="card-text"><%= todo.description %></p>
+              <div class="btn-group" role="group" aria-label="Basic example">
+                <%= link_to "Show", todo_path(todo), class:'btn btn-primary' %>
+                <%= link_to "Edit", todo_edit_path(todo), class:'btn btn-info' %>
+                <%= link_to "Delete", todo_destroy_path(todo), method: :delete, class:'btn btn-warning' %>
+              </div>
+            </li>
+          <% end %>
         <% end %>
-      <% end %>
+      </ul>
     </div>
+    <br>
   </div>
 </div>
-
-
-
 

@@ -1,18 +1,26 @@
-<% @todos.each do |todo| %>
-  <div class="card text-white bg-secondary mb-6" style="max-width: 18rem">
-    <div class="card-header"><%= todo.id %></div>
-    <div class="card-body">
-      <h5 class="card-title"><%= todo.description %></h5>
-      <p class="card-text"><%= todo.completed %></p>
-      <p><%= link_to  "Show", todo_path(todo) %></p>
-      <p><%= link_to  "Editar", todo_edit_path(todo) %></p>
-      <p><%= link_to  "Eliminar", todo_destroy_path(todo), method: :delete %></p>
-      <p><%= link_to  "Completado", todo_complete_path(todo) %></p>
+<h1> ToDo Index </h1>
+
+<div class="row">
+  <div class="col-md-8">
+    <div class="card text-white border-primary">
+      <ul class="list-group list-group-flush">
+        <% @todos.each do |todo| %>
+          <li class="list-group-item d-flex justify-content-between align-items-center">
+            <p class="card-text"><%= todo.description %></p>
+            <div class="btn-group" role="group" aria-label="Basic example">
+              <%= link_to "Show", todo_path(todo), class:'btn btn-primary' %>
+              <%= link_to "Edit", todo_edit_path(todo), class:'btn btn-info' %>
+              <%= link_to "Delete", todo_destroy_path(todo), method: :delete, class:'btn btn-warning' %>
+              <%= link_to "Complete", todo_complete_path(todo), class:'btn btn-secondary' %>
+            </div>
+          </li>
+        <% end %>
+      </ul>
     </div>
+    <br>
+  <button type="button" class="btn btn-primary"><%= link_to  "Crear nuevo ToDo", todos_new_path %></button>
   </div>
-  <br>
-<% end %>
-<button type="button" class="btn btn-primary"><%= link_to  "Crear nuevo ToDo", todos_new_path %></button>
+</div>
 
 
 
