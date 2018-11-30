@@ -1,0 +1,32 @@
+
+<div class="row">
+  <div class="col-md-6">
+    <div class="card text-white bg-primary mb-5" style="max-width: 18rem;">
+      <% @todos.each do |todo| %>
+        <% if todo.completed == true %>
+          <div class="card-body">
+            <h5 class="card-title"><%= todo.description %></h5>
+            <p class="card-text"><%= todo.completed %></p>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="col-md-6">
+      <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
+      <% @todos.each do |todo| %>
+        <% if todo.completed == false %>
+        <div class="card-body">
+          <h5 class="card-title"><%= todo.description %></h5>
+          <p class="card-text"><%= todo.completed %></p>
+        </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+
+
+
